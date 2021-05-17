@@ -1,0 +1,40 @@
+.container,
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 200px;
+  height: 200px;
+  background-color: #ccc;
+  margin: 60px auto 0;
+  display: flex;
+}
+
+.wrapper {
+  height: 150px;
+  width: 150px;
+  background-color: #666;
+}
+
+.innerBox {
+  width: 80px;
+  height: 80px;
+  padding: 8px;
+  background-color: #222;
+  display: none;
+}
+
+.container.show .innerBox {
+  display: block;
+}
+
+#circle{
+  width: 80px;
+  height: 80px;
+  border: 1px solid #3c2946;
+  position: absolute;
+  border-radius:50%;
+}

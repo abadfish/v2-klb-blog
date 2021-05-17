@@ -8,6 +8,7 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import styled from 'styled-components'
 
 import Header from "./header"
 import "./layout.css"
@@ -23,27 +24,30 @@ const Layout = ({ children }) => {
     }
   `)
 
+  // const bgImage = () => {
+  //   switch (router.pathname) {
+  //     case '/':
+  //       return image4
+  //     case '/about':
+  //       return null
+  //     case '/buy':
+  //       return null
+  //     default:
+  //       return null
+  //   }
+  // }
+
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `2rem`,
-          }}
-        >
+      <LayoutWrapper>
+        <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+        <Pages>{children}</Pages>
+      </LayoutWrapper>
+      <Foot>
           © {new Date().getFullYear()}, Built with
           {` `}
           <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div>
+        </Foot>
     </>
   )
 }
@@ -53,3 +57,20 @@ Layout.propTypes = {
 }
 
 export default Layout
+
+
+const LayoutWrapper = styled.div `
+  display: flex;
+  flex-direction: row;
+`
+const Pages = styled.main `
+  width: 100%;
+  height: 100%;
+  
+`
+
+const Foot = styled.footer `
+  margin-top: 2rem;
+  background: #fff;
+  position: absolute;
+`
