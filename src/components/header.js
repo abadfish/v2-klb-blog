@@ -1,22 +1,27 @@
-import * as React from "react"
+import React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import styled from 'styled-components'
 
-const Header = ({ siteTitle }) => (
-  <HeaderWrapper>
-    <HeaderBody>
-      <h1 style={{ margin: 0 }}>
-        <HeaderLink to="/">{siteTitle}</HeaderLink>
-      </h1>
-      <h5>
-        <HeaderLink to='/about'>About</HeaderLink>
-      </h5>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </HeaderBody>
-  </HeaderWrapper>
-)
+const Header = ({ siteTitle }) => {
+
+  const links = [
+    { to: '/', label: 'KO' },
+    { to: '/about', label: 'About' },
+    { to: '/blog', label: 'Blog' },
+    { to: '/using-typescript/', label: 'Projects' },
+  ]
+
+  return (
+    <HeaderWrapper>
+      <HeaderBody>
+        { links.map((l, i) => (
+          <HeaderLink to={ l.to } key={i}>{ l.label }</HeaderLink>
+        ))}
+      </HeaderBody>
+    </HeaderWrapper>
+  )
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
@@ -29,18 +34,35 @@ Header.defaultProps = {
 export default Header
 
 const HeaderWrapper = styled.nav `
-  background: slategray;
-  height: 92vh;
-  width: 200px;
+  background: transparent;
+  width: 100%;
+  position: absolute;
+  z-index: 100;
+  margin-bottom: 3rem;
 `
 const HeaderBody = styled.div `
   padding: 1.45rem 1.0875rem;
-  height: 50%;
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+  display: inline-grid;
+  grid-template-columns: repeat(4, 25%);
   justify-content: space-around;
+  text-align: center;
 `
 const HeaderLink = styled(Link) `
-  color: white;
   text-decoration: none;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 300;
+  color: rgb(156, 253, 253);
+  font-size: 14px;
+  letter-spacing: .75px;
+  z-index: 1000;
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  transition: all .5s ease;
+  padding-bottom: 3rem;
+  &:hover {
+    font-weight: bold;
+    font-size: calc(10px + 1vmin);
+    text-shadow: 0px 0px 2px black, 0 0 25px black, 0 0 5px black;
+  }
 `

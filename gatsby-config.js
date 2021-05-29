@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `KLB Tech Blog`,
-    description: `For my thoughts on things that come up when I write code.`,
+    title: `abadfish tech blog`,
+    description: `Where I share the largely unoriginal thoughts that come up while I write code.`,
     author: `@abadfish`,
   },
   plugins: [
@@ -18,7 +18,7 @@ module.exports = {
       options: {
         fonts: [
           `syne mono`,
-          `source sans pro\:300,400,400i,700` // you can also specify font weights and styles
+          `roboto mono\:300,400,400i,700`,
         ],
         display: 'swap'
       }
@@ -28,9 +28,12 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
-      },
+        name: `posts`,
+        path: `${__dirname}/src/posts/`,
+      }
     },
     `gatsby-transformer-sharp`,
+    `gatsby-transformer-remark`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
