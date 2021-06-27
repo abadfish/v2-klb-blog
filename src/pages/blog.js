@@ -5,44 +5,47 @@ import Layout from '../components/layout'
 import blogHomeImage from '../images/minified-js.jpg'
 // import { node } from 'prop-types'
 
-
-const Blog = () => {
-  const data = useStaticQuery(graphql`
-    query BlogQuery {
-      site {
-        siteMetadata {
-          title
-          description
-        }
+const BLOG_INDEX_QUERY = graphql`
+  query BlogQuery {
+    site {
+      siteMetadata {
+        title
+        description
       }
-      allMarkdownRemark {
-        totalCount
-        edges {
-          node {
-            excerpt
-            frontmatter {
-              title
-              slug
-              date(formatString: "MMMM DD, YYYY")
-            }
+    }
+    allMarkdownRemark(limit: 5, sort: {
+      order: DESC,
+      fields: [frontmatter___date],
+    }) {
+      totalCount
+      edges {
+        node {
+          excerpt
+          frontmatter {
+            title
+            slug
+            date(formatString: "MMMM DD, YYYY")
           }
         }
       }
     }
-  `)
+  }
+`
 
+const Blog = () => {
+
+  const data = useStaticQuery(BLOG_INDEX_QUERY)
   const postRef = useRef()
-
   const posts = data.allMarkdownRemark.edges.slice(0, 3)
-  console.log(posts.length)
 
   const postList = posts?.map(p => (
-    <Link to={`/posts/${p.node.frontmatter.slug}`}>
     <article key={p.node.id}>
+      <Link to={`/posts${p.node.frontmatter.slug}`}>
         <h5>{ p.node.frontmatter.title }</h5>
-        <p>{ p.node.excerpt }</p>
+      </Link>
+      <p>{ p.node.excerpt }</p>
     </article>
-    </Link>
+    
   ))
        
   return (
@@ -75,9 +78,11 @@ const PostListSection = styled.section `
   }
 `
 
-const BlogHome = styled.section `
-  padding: 4.45rem 0 1.45rem;
+const BlogHome = styled.div `
+  // padding: 4.45rem 0 1.45rem;
   background-color: rgba(25,53,73,1);
+  // background-color: hsl(168, 76%, 19%); //dark green
+
   
 `
 const BlogHeading = styled.header `

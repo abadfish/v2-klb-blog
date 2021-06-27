@@ -1,6 +1,6 @@
 ---
 slug: "/race-conditions"
-date: "2021-05-28"
+date: "2021-06-21"
 title: "Handling Race Conditions"
 tag: "react"
 ---

@@ -9,14 +9,23 @@ import bgImage from '../images/pro-amore-equitum.jpg'
 const Captions = ["hello world"]
 
 export const Me = () => {
-  
+
+  // function isMobileDevice() {
+  //   return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+  // }
+
   useEffect(() => {
-    window.addEventListener('mousemove', followMouse)
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      window.addEventListener('touchmove', followMouse)
+    } else {
+      window.addEventListener('mousemove', followMouse)
+    }
   }, [])
 
   useEffect(() => {
     return () => {
       window.removeEventListener('mousemove', followMouse)
+      window.removeEventListener('touchmove', followMouse)
     }
   }, [])
 
@@ -40,8 +49,8 @@ export const Me = () => {
     <Home>
       <Backdrop>
         <FullScreenVideo loop muted autoPlay poster="">
-          <source src={stars} type="video/mp4"/>
-          <track kind="captions" srcLang="en" src={Captions} />
+          <source src={ stars }  type="video/mp4"/>
+          <track kind="captions" srcLang="en" src={ Captions } />
         </FullScreenVideo>
 
       </Backdrop>
@@ -67,21 +76,16 @@ const Backdrop = styled.div `
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
+  height: 100vh;
   background-color: #000;
-  // background: url("${bgImage}");
-  // background-size: cover;
-  // background-attachment: fixed;
-  // background-repeat: repeat-y;
-  // background-position: center;
   z-index: -1;
   
 `
 const FullScreenVideo = styled.video `
-  width: auto;
+  width: 100vw;
   height: auto;
-  min-width: 100%;
   min-height: 100%;
+  overflow: hidden;
   -webkit-transform: translate(-0%, -0%);
   -moz-transform: translate(-0%, -0%);
   -ms-transform: translate(-0%, -0%);
@@ -125,9 +129,9 @@ const FixedName = styled.div `
     -webkit-transition: all .5s ease;
     -moz-transition: all .5s ease;
     transition: all .5s ease;
-    &:hover {
-      text-shadow: 0px 0px 2px black, 0 0 25px black, 0 0 5px darkblue;
-    }
+    // &:hover {
+    //   text-shadow: 0px 0px 2px black, 0 0 25px black, 0 0 5px darkblue;
+    // }
   }
   h1 {
     font-size: calc(10px + 4vmin);

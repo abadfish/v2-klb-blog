@@ -36,27 +36,47 @@ const Layout = ({ children, location }) => {
   //       return null
   //   }
   // }
-  const getPage = () => {
+  const getPageStyles = () => {
     
     switch (location?.pathname) {
       case '/':
-        return 'static'
+        return {
+          footerPos: 'static',
+          headerPos: 'absolute',
+          headerBg: 'transparent',
+          pageBg: 'rgba(25,53,73,1)'
+        }
       case '/about':
-        return 'fixed'
-      case '/blog/':
-        return 'fixed'
+        return {
+          footerPos: 'fixed',
+          headerPos: 'absolute',
+          headerBg: 'transparent',
+          pageBg: 'rgba(25,53,73,1)'
+        }
+      case '/blog':
+        return {
+          footerPos: 'fixed',
+          headerPos: 'relative',
+          headerBg: 'rgba(25,53,73,1)',
+          pageBg: 'rgba(25,53,73,1)'
+        }
       default:
-        return 'fixed'
+        return {
+          footerPos: 'fixed',
+          headerPos: 'relative',
+          headerBg: 'rgba(25,53,73,1)',
+          pageBg: 'rgba(25,53,73,1)'
+        }
     }
   }
 
   return (
     <>
       <LayoutWrapper>
-        <Header  />
-        <Pages>{children}</Pages>
+        <Header styles={ getPageStyles() } />
+        <Pages pageColor={ getPageStyles().pageBg }>{children}</Pages>
       </LayoutWrapper>
-      <Foot position={ getPage() }>
+      <Foot position={ getPageStyles().footerPos }>
         <div>
           © {new Date().getFullYear()}, 
           {` `}
@@ -80,6 +100,7 @@ const LayoutWrapper = styled.div `
 const Pages = styled.main `
   width: 100%;
   height: 100%;
+  background-color: ${props => props.pageColor};
   // padding-top: 4.45rem;
 `
 

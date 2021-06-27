@@ -1,6 +1,6 @@
 ---
 slug: "/state-management"
-date: "2021-05-28"
+date: "2021-06-11"
 title: "Comparing a Few State Management Tools"
 tag: "react"
 ---

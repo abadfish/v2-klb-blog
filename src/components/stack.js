@@ -63,7 +63,6 @@ export const Stack = () => {
             quality={95}
             formats={["AUTO", "WEBP", "AVIF"]}
             alt="ReactJS Icon"
-            style={{ marginBottom: `1.45rem` }}
           />
         </ImageContainer>
       </StackGrid>
@@ -73,14 +72,14 @@ export const Stack = () => {
 }
 
 const StackPage = styled.section `
-  height: 800px;
+  height: auto;
   width: 100%;
   background-color: #d3d3d3;
 `
 
 const StackGrid = styled.div `
   width: 100%;
-  height: auto;
+  height: 100px;
   display: inline-grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   // grid-template-rows: 1fr 1fr;
