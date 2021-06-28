@@ -71,7 +71,8 @@ export default Blog
 
 const PostListSection = styled.section `
   width: 100%;
-  height: calc(100vh * .5);
+  // height: calc(100vh * .5);
+  height: 100vh;
   padding: 4rem 6rem;
   article {
     color: #fff;
@@ -79,7 +80,6 @@ const PostListSection = styled.section `
 `
 
 const BlogHome = styled.div `
-  // padding: 4.45rem 0 1.45rem;
   background-color: rgba(25,53,73,1);
   // background-color: hsl(168, 76%, 19%); //dark green
 
