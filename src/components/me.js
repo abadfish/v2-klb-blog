@@ -78,7 +78,6 @@ const Backdrop = styled.div `
   left: 0;
   height: 100vh;
   background-color: #000;
-  z-index: -1;
   
 `
 const FullScreenVideo = styled.video `
