@@ -42,6 +42,7 @@ const Blog = () => {
     <article key={p.node.id}>
       <Link to={`/posts${p.node.frontmatter.slug}`}>
         <h5>{ p.node.frontmatter.title }</h5>
+        <h6>{ p.node.frontmatter.date }</h6>
       </Link>
       <p>{ p.node.excerpt }</p>
     </article>
@@ -76,6 +77,12 @@ const PostListSection = styled.section `
   padding: 4rem 6rem;
   article {
     color: #fff;
+  }
+  h5 {
+    color: rgb(156, 253, 253);
+  }
+  h6 {
+    color: #d3d3d3;
   }
 `
 

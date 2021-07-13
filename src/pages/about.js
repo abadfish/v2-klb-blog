@@ -9,8 +9,8 @@ const About = ({ location }) => {
     <Layout location={ location }>
       <PageBg >
       <AboutPage>
-      <h1>About</h1>
-      <p>I'm a web developer from Stamford, CT. </p>
+        <h1>About</h1>
+        <p>I'm a full stack web developer from Stamford, CT with experience building scalable REST APIs and React clients. I started my career in the financial industry with my earliest code written in VBA but have since evolved to focus on practical solutions to everyday workflow challenges using web tech. I have a growing passion for Javascript and it's many available resources and tools. </p>
       </AboutPage>
       </PageBg>
     </Layout>
