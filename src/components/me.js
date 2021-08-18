@@ -35,12 +35,13 @@ export const Me = () => {
   const yp = useRef(0)
   const element = "circle"
 
-  const followMouse = e => {
+  function followMouse(e) {
+    // requestAnimationFrame(followMouse)
     let circle = document.getElementById(element)
     mouseX.current = e.pageX - 130
     mouseY.current = e.pageY - 130
-    xp.current = (xp.current += ((mouseX.current - xp.current)/10))
-    yp.current = (yp.current += ((mouseY.current - yp.current)/10))
+    xp.current = (xp.current += ((mouseX.current - xp.current)))
+    yp.current = (yp.current += ((mouseY.current - yp.current)))
     circle.style.left = Object.values(xp) + "px"
     circle.style.top = Object.values(yp) + "px"
   }
@@ -61,7 +62,13 @@ export const Me = () => {
             <h2>Full Stack Developer</h2>
           </div>
         </FixedName>
-        <Circle id="circle"></Circle>
+        <Circle id="circle">
+          <CircleVideo loop muted autoPlay poster="">
+            <source src={ stars }  type="video/mp4"/>
+            <track kind="captions" srcLang="en" src={ Captions } />
+          </CircleVideo>
+
+        </Circle>
       </Overlay>
     </Home>
   )
@@ -90,20 +97,22 @@ const FullScreenVideo = styled.video `
   -ms-transform: translate(-0%, -0%);
   transform: translate(-0%, -0%);
 `
+
 const Overlay = styled.div `
+  // background: rgba(25,53,73,0.5); //blue
   position: relative;
-  // background: rgba(0,0,0,0.5);
-  background: rgba(25,53,73,0.5); //blue
   background-size: cover;
   height: 100%;
   z-index: 50;
 `
+
 const Circle = styled.div `
   width: 300px;
   height: 300px;
   position: absolute;
   border-radius: 50%;
-  background: url("${bgImage}");
+  background: url("${stars}");
+  // background: url("${bgImage}");
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -111,7 +120,18 @@ const Circle = styled.div `
   -moz-box-shadow:    inset 0 0 20px #000000;
   -webkit-box-shadow: inset 0 0 20px #000000;
   box-shadow:         inset 0 0 20px #000000;
-  `
+`
+const CircleVideo = styled.video `
+  width: 100vw;
+  height: auto;
+  min-height: 100%;
+  overflow: hidden;
+  -webkit-transform: translate(-0%, -0%);
+  -moz-transform: translate(-0%, -0%);
+  -ms-transform: translate(-0%, -0%);
+  transform: translate(-0%, -0%);
+`
+
 const FixedName = styled.div `
   height: 100%;
   width: 100%;
@@ -128,19 +148,19 @@ const FixedName = styled.div `
     -webkit-transition: all .5s ease;
     -moz-transition: all .5s ease;
     transition: all .5s ease;
-    // &:hover {
-    //   text-shadow: 0px 0px 2px black, 0 0 25px black, 0 0 5px darkblue;
-    // }
+    &:hover {
+      text-shadow: 0px 0px 2px black, 0 0 25px black, 0 0 5px darkblue;
+    }
   }
   h1 {
-    font-size: calc(10px + 4vmin);
+    font-size: calc(20px + 5vmin);
     font-family: 'Syne Mono', monospace;
     color: hsl(48, 89%, 60%);
   }
   h2 {
     font-size: calc(10px + 2vmin);
     font-family: 'Syne Mono', monospace;
-    color: rgb(156, 253, 253);
+    color: hsl(180, 96%, 80.2%);
   }
 `
 

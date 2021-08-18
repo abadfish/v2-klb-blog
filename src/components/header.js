@@ -60,19 +60,23 @@ const HeaderLink = styled.div `
   justify-content: center;
   a {
     text-decoration: none;
-    font-family: 'Roboto Mono', monospace;
+    text-transform: uppercase;
+    // font-family: 'Syne Mono', monospace;
     font-weight: 300;
-    color: rgb(156, 253, 253);
-    font-size: 14px;
+    color: hsl(180, 96%, 80.2%);
+    font-size: calc(10px + 0.5vmin);
     letter-spacing: .75px;
     z-index: 1000;
     -webkit-transition: all .5s ease;
     -moz-transition: all .5s ease;
     transition: all .5s ease;
     &:hover {
-      font-weight: bold;
-      font-size: calc(10px + 1vmin);
+      // font-weight: bold;
+      // font-size: calc(10px + 1vmin);
       text-shadow: 0px 0px 2px black, 0 0 25px black, 0 0 5px black;
+      transform: rotate(4deg);
+      -webkit-transform: rotate(4deg);
+      -moz-transform: rotate(4deg);
     }
   }
 `

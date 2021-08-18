@@ -19,6 +19,7 @@ module.exports = {
         fonts: [
           `syne mono`,
           `roboto mono\:300,400,400i,700`,
+          `roboto`
         ],
         display: 'swap'
       }

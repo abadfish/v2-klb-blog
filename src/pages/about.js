@@ -33,7 +33,7 @@ const PageBg = styled.div `
 const AboutPage = styled.div `
   margin: 0 auto;
   background: rgba(0,0,0,0.6);
-  padding: 4.45rem 1.0875rem 1.45rem;
+  padding: 4.45rem 3rem 1.45rem;
   width: 100%;
   height: 100%;
   color: #fff;
