@@ -29,6 +29,25 @@ export const Me = () => {
     }
   }, [])
 
+  // var dots = [],
+  //   mouse = {
+  //     x: 0,
+  //     y: 0
+  //   };
+
+  // The Dot object used to scaffold the dots
+  // var Dot = function() {
+  //   x = 0
+  //   y = 0
+  //   node = (function(){
+  //     var n = document.createElement("div")
+  //     n.className = "trail"
+  //     document.body.appendChild(n)
+  //     return n
+  //   }())
+  // }
+
+  const dots = useRef([])
   const mouseX = useRef(0)
   const mouseY = useRef(0)
   const xp = useRef(0)
@@ -46,6 +65,29 @@ export const Me = () => {
     circle.style.top = Object.values(yp) + "px"
   }
 
+  // https://codepen.io/falldowngoboone/pen/PwzPYv
+
+  // function draw() {
+  //   // Make sure the mouse position is set everytime
+  //     // draw() is called.
+  //   var x = mouse.x,
+  //       y = mouse.y;
+  //   // This loop is where all the 90s magic happens
+  //   dots.forEach(function(dot, index, dots) {
+  //     var nextDot = dots[index + 1] || dots[0];
+  //     dot.x = x;
+  //     dot.y = y;
+  //     dot.draw();
+  //     x += (nextDot.x - dot.x) * .6;
+  //     y += (nextDot.y - dot.y) * .6;
+  //   });
+  // }
+
+  // Dot.prototype.draw = function() {
+  //   node.style.left = x + "px"
+  //   node.style.top = y + "px"
+  // }
+
   return (
     <Home>
       <Backdrop>
@@ -58,15 +100,15 @@ export const Me = () => {
       <Overlay>
         <FixedName>
           <div>
-            <h1>KIRSTEN O'FARRELL</h1>
-            <h2>Full Stack Developer</h2>
+            <h1>EXPERIMENTAL</h1>
+            <h2>UI Tricks</h2>
           </div>
         </FixedName>
         <Circle id="circle">
-          <CircleVideo loop muted autoPlay poster="">
+          {/* <CircleVideo loop muted autoPlay poster="">
             <source src={ stars }  type="video/mp4"/>
             <track kind="captions" srcLang="en" src={ Captions } />
-          </CircleVideo>
+          </CircleVideo> */}
 
         </Circle>
       </Overlay>
@@ -105,14 +147,21 @@ const Overlay = styled.div `
   height: 100%;
   z-index: 50;
 `
-
+const Trail = styled.div `
+// .trail { /* className for the trail elements */
+//   position: absolute;
+//   height: 6px; width: 6px;
+//   border-radius: 3px;
+//   background: teal;
+// }
+`
 const Circle = styled.div `
   width: 300px;
   height: 300px;
   position: absolute;
   border-radius: 50%;
-  background: url("${stars}");
-  // background: url("${bgImage}");
+  // background: url("${stars}");
+  background: url("${bgImage}");
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
